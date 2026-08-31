@@ -1,0 +1,28 @@
+<mxfile host="app.diagrams.net" modified="2026-08-31T00:00:00.000Z" agent="Codex" version="24.7.17" type="device">
+  <diagram id="electronics-architecture" name="X Electronics Architecture">
+    <mxGraphModel grid="1" gridSize="10" page="1" pageWidth="1169" pageHeight="827">
+      <root>
+        <mxCell id="0"/>
+        <mxCell id="1" parent="0"/>
+        <mxCell id="user" value="Warehouse User&#xa;(Frappe Desk)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontStyle=1" vertex="1" parent="1"><mxGeometry x="40" y="250" width="160" height="70" as="geometry"/></mxCell>
+        <mxCell id="entry" value="Stock Entry&#xa;Submittable DocType" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontStyle=1" vertex="1" parent="1"><mxGeometry x="270" y="240" width="190" height="90" as="geometry"/></mxCell>
+        <mxCell id="controller" value="stock_entry.py&#xa;validate + on_submit" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450" vertex="1" parent="1"><mxGeometry x="530" y="240" width="190" height="90" as="geometry"/></mxCell>
+        <mxCell id="stock" value="stock.py&#xa;add_stock()&#xa;get_balance()" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366" vertex="1" parent="1"><mxGeometry x="790" y="240" width="180" height="90" as="geometry"/></mxCell>
+        <mxCell id="ledger" value="Stock Ledger Entry&#xa;Permanent history" style="shape=cylinder;whiteSpace=wrap;html=1;boundedLbl=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontStyle=1" vertex="1" parent="1"><mxGeometry x="1030" y="235" width="190" height="100" as="geometry"/></mxCell>
+        <mxCell id="item" value="Item&#xa;item_code, item_name&#xa;unit, valuation_method" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656" vertex="1" parent="1"><mxGeometry x="280" y="420" width="180" height="100" as="geometry"/></mxCell>
+        <mxCell id="warehouse" value="Warehouse (Tree)&#xa;warehouse_name&#xa;parent_warehouse, is_group" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656" vertex="1" parent="1"><mxGeometry x="530" y="420" width="190" height="100" as="geometry"/></mxCell>
+        <mxCell id="reports" value="Script Reports&#xa;Stock Balance&#xa;Stock Ledger" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontStyle=1" vertex="1" parent="1"><mxGeometry x="1030" y="420" width="190" height="90" as="geometry"/></mxCell>
+        <mxCell id="db" value="MariaDB&#xa;DocType tables" style="shape=cylinder;whiteSpace=wrap;html=1;boundedLbl=1;fillColor=#f5f5f5;strokeColor=#666666" vertex="1" parent="1"><mxGeometry x="790" y="560" width="180" height="80" as="geometry"/></mxCell>
+        <mxCell id="e1" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=block" edge="1" parent="1" source="user" target="entry"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="e2" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=block" edge="1" parent="1" source="entry" target="controller"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="e3" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=block" edge="1" parent="1" source="controller" target="stock"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="e4" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=block" edge="1" parent="1" source="stock" target="ledger"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="e5" value="links" style="edgeStyle=orthogonalEdgeStyle;html=1;dashed=1;endArrow=open" edge="1" parent="1" source="entry" target="item"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="e6" value="links" style="edgeStyle=orthogonalEdgeStyle;html=1;dashed=1;endArrow=open" edge="1" parent="1" source="entry" target="warehouse"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="e7" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=block" edge="1" parent="1" source="ledger" target="reports"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="e8" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=block" edge="1" parent="1" source="reports" target="db"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="e9" value="stores" style="edgeStyle=orthogonalEdgeStyle;html=1;dashed=1;endArrow=block" edge="1" parent="1" source="ledger" target="db"><mxGeometry relative="1" as="geometry"/></mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
