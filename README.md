@@ -193,7 +193,7 @@ ERPNext is not needed.
 
 ~~~bash
 cd /path/to/your/bench
-bench get-app /path/to/electronics
+bench get-app https://github.com/paulwritescode/xwarehouse.git
 bench --site xwarehouse install-app electronics
 bench --site xwarehouse migrate
 ~~~
@@ -218,17 +218,20 @@ The tests cover Receipt, automatic ledger creation, Consume, Transfer, Moving Av
 
 ## GitHub checklist
 
-Commit the app source only:
+The app source is hosted at https://github.com/paulwritescode/xwarehouse.
+
+To clone it into an existing bench:
+
+~~~bash
+cd /path/to/your/bench
+gh repo clone paulwritescode/xwarehouse apps/electronics
+~~~
+
+If the app already exists locally, update it with:
 
 ~~~bash
 cd /path/to/your/bench/apps/electronics
-git init
-git add .
-git status
-git commit -m "Build simple electronics warehouse system"
-git branch -M main
-git remote add origin https://github.com/YOUR-USERNAME/electronics.git
-git push -u origin main
+git pull origin main
 ~~~
 
 Do not commit the bench env/, site data under sites/, database data, passwords, API keys, Redis files, logs, or generated assets.
