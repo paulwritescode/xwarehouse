@@ -1,0 +1,19 @@
+{
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "field_order": ["item", "batch_no", "serial_no", "system_qty", "counted_qty", "variance", "valuation_rate", "variance_value"],
+ "fields": [
+  {"fieldname": "item", "fieldtype": "Link", "label": "Item", "options": "Item", "reqd": 1},
+  {"fieldname": "batch_no", "fieldtype": "Data", "label": "Batch No"},
+  {"fieldname": "serial_no", "fieldtype": "Data", "label": "Serial No"},
+  {"fieldname": "system_qty", "fieldtype": "Float", "label": "System Quantity", "read_only": 1},
+  {"fieldname": "counted_qty", "fieldtype": "Float", "label": "Counted Quantity", "reqd": 1},
+  {"fieldname": "variance", "fieldtype": "Float", "label": "Variance", "read_only": 1},
+  {"fieldname": "valuation_rate", "fieldtype": "Currency", "label": "Valuation Rate", "read_only": 1},
+  {"fieldname": "variance_value", "fieldtype": "Currency", "label": "Variance Value", "read_only": 1}
+ ],
+ "istable": 1,
+ "module": "X electronics warehouse",
+ "name": "Stock Count Item",
+ "permissions": []
+}

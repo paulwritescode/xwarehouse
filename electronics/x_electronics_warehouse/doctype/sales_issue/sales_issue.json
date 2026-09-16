@@ -1,0 +1,26 @@
+{
+ "actions": [],
+ "autoname": "SI-.YYYY.-",
+ "doctype": "DocType",
+ "field_order": ["posting_date", "posting_time", "customer", "source_warehouse", "items", "total_revenue", "total_cost", "expected_profit", "margin_percent", "stock_entry"],
+ "fields": [
+  {"fieldname": "posting_date", "fieldtype": "Date", "label": "Posting Date", "reqd": 1},
+  {"fieldname": "posting_time", "fieldtype": "Time", "label": "Posting Time", "reqd": 1},
+  {"fieldname": "customer", "fieldtype": "Link", "label": "Customer", "options": "Customer", "reqd": 1},
+  {"fieldname": "source_warehouse", "fieldtype": "Link", "label": "Source Warehouse", "options": "Warehouse", "reqd": 1},
+  {"fieldname": "items", "fieldtype": "Table", "label": "Items", "options": "Stock Entry Item", "reqd": 1},
+  {"fieldname": "total_revenue", "fieldtype": "Currency", "label": "Expected Revenue", "read_only": 1},
+  {"fieldname": "total_cost", "fieldtype": "Currency", "label": "Expected Cost", "read_only": 1},
+  {"fieldname": "expected_profit", "fieldtype": "Currency", "label": "Expected Gross Profit", "read_only": 1},
+  {"fieldname": "margin_percent", "fieldtype": "Percent", "label": "Expected Margin %", "read_only": 1},
+  {"fieldname": "stock_entry", "fieldtype": "Link", "label": "Stock Entry", "options": "Stock Entry", "read_only": 1}
+ ],
+ "is_submittable": 1,
+ "module": "X electronics warehouse",
+ "name": "Sales Issue",
+ "permissions": [
+  {"create": 1, "delete": 1, "read": 1, "report": 1, "role": "System Manager", "submit": 1, "write": 1},
+  {"create": 1, "read": 1, "report": 1, "role": "Warehouse User", "write": 1},
+  {"create": 1, "delete": 1, "read": 1, "report": 1, "role": "Warehouse Manager", "submit": 1, "write": 1}
+ ]
+}

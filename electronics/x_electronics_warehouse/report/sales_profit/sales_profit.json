@@ -1,0 +1,9 @@
+{
+ "doctype": "Report",
+ "name": "Sales Profit",
+ "ref_doctype": "Sales Issue",
+ "report_name": "Sales Profit",
+ "report_type": "Script Report",
+ "is_standard": "Yes",
+ "module": "X Electronics Warehouse"
+}

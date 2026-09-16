@@ -34,10 +34,30 @@
    "label": "Unit"
   },
   {
+   "default": "0",
+   "fieldname": "reorder_level",
+   "fieldtype": "Float",
+   "label": "Reorder Level",
+   "description": "Alert when stock is at or below this quantity. Zero disables the alert."
+  },
+  {
+   "default": "0",
+   "fieldname": "reorder_qty",
+   "fieldtype": "Float",
+   "label": "Reorder Quantity"
+  },
+  {
    "fieldname": "valuation_method",
    "fieldtype": "Select",
    "label": "Valuation Method",
    "options": "Moving Average"
+  },
+  {
+   "default": "None",
+   "fieldname": "tracking_method",
+   "fieldtype": "Select",
+   "label": "Tracking Method",
+   "options": "None\nBatch\nSerial"
   }
  ],
  "grid_page_length": 50,
@@ -59,6 +79,19 @@
    "report": 1,
    "role": "System Manager",
    "share": 1,
+   "write": 1
+  },
+  {
+   "read": 1,
+   "report": 1,
+   "role": "Warehouse User"
+  },
+  {
+   "create": 1,
+   "delete": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Warehouse Manager",
    "write": 1
   }
  ],

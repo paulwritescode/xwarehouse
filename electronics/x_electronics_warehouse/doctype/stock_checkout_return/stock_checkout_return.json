@@ -1,0 +1,21 @@
+{
+ "actions": [],
+ "autoname": "SCR-.YYYY.-",
+ "doctype": "DocType",
+ "field_order": ["return_date", "return_time", "checkout", "items", "stock_entry"],
+ "fields": [
+  {"fieldname": "return_date", "fieldtype": "Date", "label": "Return Date", "reqd": 1},
+  {"fieldname": "return_time", "fieldtype": "Time", "label": "Return Time", "reqd": 1},
+  {"fieldname": "checkout", "fieldtype": "Link", "label": "Stock Checkout", "options": "Stock Checkout", "reqd": 1},
+  {"fieldname": "items", "fieldtype": "Table", "label": "Items", "options": "Stock Checkout Return Item", "reqd": 1},
+  {"fieldname": "stock_entry", "fieldtype": "Link", "label": "Stock Entry", "options": "Stock Entry", "read_only": 1}
+ ],
+ "is_submittable": 1,
+ "module": "X electronics warehouse",
+ "name": "Stock Checkout Return",
+ "permissions": [
+  {"create": 1, "delete": 1, "read": 1, "report": 1, "role": "System Manager", "submit": 1, "write": 1},
+  {"create": 1, "read": 1, "report": 1, "role": "Warehouse User", "write": 1},
+  {"create": 1, "delete": 1, "read": 1, "report": 1, "role": "Warehouse Manager", "submit": 1, "write": 1}
+ ]
+}

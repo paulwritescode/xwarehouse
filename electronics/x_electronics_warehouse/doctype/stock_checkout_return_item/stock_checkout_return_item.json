@@ -1,0 +1,13 @@
+{
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "field_order": ["checkout_item", "qty"],
+ "fields": [
+  {"fieldname": "checkout_item", "fieldtype": "Link", "label": "Checkout Item", "options": "Stock Checkout Item", "reqd": 1},
+  {"fieldname": "qty", "fieldtype": "Float", "label": "Returned Quantity", "reqd": 1}
+ ],
+ "istable": 1,
+ "module": "X electronics warehouse",
+ "name": "Stock Checkout Return Item",
+ "permissions": []
+}

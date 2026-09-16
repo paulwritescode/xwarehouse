@@ -11,12 +11,16 @@
   "posting_time",
   "item",
   "warehouse",
+  "batch_no",
+  "serial_no",
   "actual_qty",
   "incoming_rate",
   "valuation_rate",
   "qty_after_transaction",
   "stock_value",
-  "stock_entry"
+  "stock_entry",
+  "is_reversal",
+  "reversal_of"
  ],
  "fields": [
   {
@@ -45,6 +49,18 @@
    "fieldtype": "Link",
    "label": "Warehouse",
    "options": "Warehouse"
+  },
+  {
+   "fieldname": "batch_no",
+   "fieldtype": "Data",
+   "label": "Batch No",
+   "read_only": 1
+  },
+  {
+   "fieldname": "serial_no",
+   "fieldtype": "Data",
+   "label": "Serial No",
+   "read_only": 1
   },
   {
    "fieldname": "incoming_rate",
@@ -79,6 +95,20 @@
    "fieldname": "actual_qty",
    "fieldtype": "Float",
    "label": "Quantity Change"
+  },
+  {
+   "default": "0",
+   "fieldname": "is_reversal",
+   "fieldtype": "Check",
+   "label": "Is Reversal",
+   "read_only": 1
+  },
+  {
+   "fieldname": "reversal_of",
+   "fieldtype": "Link",
+   "label": "Reversal Of",
+   "options": "Stock Ledger Entry",
+   "read_only": 1
   }
  ],
  "grid_page_length": 50,
@@ -92,16 +122,23 @@
  "owner": "Administrator",
  "permissions": [
   {
-   "create": 1,
-   "delete": 1,
    "email": 1,
    "export": 1,
    "print": 1,
    "read": 1,
    "report": 1,
    "role": "System Manager",
-   "share": 1,
-   "write": 1
+   "share": 1
+  },
+  {
+   "read": 1,
+   "report": 1,
+   "role": "Warehouse User"
+  },
+  {
+   "read": 1,
+   "report": 1,
+   "role": "Warehouse Manager"
   }
  ],
  "row_format": "Dynamic",

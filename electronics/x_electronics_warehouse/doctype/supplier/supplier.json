@@ -1,0 +1,17 @@
+{
+ "actions": [],
+ "autoname": "field:supplier_code",
+ "doctype": "DocType",
+ "field_order": ["supplier_code", "supplier_name", "email", "phone", "disabled"],
+ "fields": [
+  {"fieldname": "supplier_code", "fieldtype": "Data", "label": "Supplier Code", "reqd": 1, "unique": 1},
+  {"fieldname": "supplier_name", "fieldtype": "Data", "label": "Supplier Name", "reqd": 1, "in_list_view": 1},
+  {"fieldname": "email", "fieldtype": "Data", "label": "Email", "options": "Email"},
+  {"fieldname": "phone", "fieldtype": "Data", "label": "Phone"},
+  {"default": "0", "fieldname": "disabled", "fieldtype": "Check", "label": "Disabled", "in_list_view": 1}
+ ],
+ "module": "X electronics warehouse",
+ "name": "Supplier",
+ "permissions": [{"create": 1, "delete": 1, "read": 1, "write": 1, "report": 1, "export": 1, "print": 1, "role": "System Manager"}, {"read": 1, "report": 1, "role": "Warehouse User"}, {"create": 1, "delete": 1, "read": 1, "report": 1, "role": "Warehouse Manager", "write": 1}],
+ "title_field": "supplier_name"
+}

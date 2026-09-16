@@ -1,0 +1,18 @@
+{
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "field_order": ["item", "qty", "rate", "batch_no", "serial_no", "returned_qty", "outstanding_qty"],
+ "fields": [
+  {"fieldname": "item", "fieldtype": "Link", "label": "Item", "options": "Item", "reqd": 1},
+  {"fieldname": "qty", "fieldtype": "Float", "label": "Quantity", "reqd": 1},
+  {"fieldname": "rate", "fieldtype": "Currency", "label": "Cost Rate", "read_only": 1},
+  {"fieldname": "batch_no", "fieldtype": "Data", "label": "Batch No"},
+  {"fieldname": "serial_no", "fieldtype": "Data", "label": "Serial No"},
+  {"default": "0", "fieldname": "returned_qty", "fieldtype": "Float", "label": "Returned Quantity", "read_only": 1},
+  {"default": "0", "fieldname": "outstanding_qty", "fieldtype": "Float", "label": "Outstanding Quantity", "read_only": 1}
+ ],
+ "istable": 1,
+ "module": "X electronics warehouse",
+ "name": "Stock Checkout Item",
+ "permissions": []
+}

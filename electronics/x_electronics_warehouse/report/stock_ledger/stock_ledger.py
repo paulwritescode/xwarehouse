@@ -22,6 +22,8 @@ def execute(filters=None):
             item.item_code,
             item.item_name,
             warehouse.warehouse_name,
+            sle.batch_no,
+            sle.serial_no,
             sle.actual_qty,
             sle.incoming_rate,
             sle.valuation_rate,
@@ -65,6 +67,16 @@ def execute(filters=None):
         {
             "label": "Warehouse",
             "fieldname": "warehouse_name",
+            "fieldtype": "Data",
+        },
+        {
+            "label": "Batch No",
+            "fieldname": "batch_no",
+            "fieldtype": "Data",
+        },
+        {
+            "label": "Serial No",
+            "fieldname": "serial_no",
             "fieldtype": "Data",
         },
         {

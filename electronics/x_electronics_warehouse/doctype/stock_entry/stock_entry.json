@@ -11,6 +11,14 @@
   "posting_date",
   "posting_time",
   "purpose",
+  "approval_status",
+  "approved_by",
+  "approved_on",
+  "supplier",
+  "customer",
+  "checked_out_to",
+  "stock_count",
+  "adjustment_reason",
   "source_warehouse",
   "target_warehouse",
   "items"
@@ -44,7 +52,58 @@
    "fieldname": "purpose",
    "fieldtype": "Select",
    "label": "Purpose",
-   "options": "Receipt\nConsume\nTransfer"
+   "options": "Receipt\nOpening Stock\nConsume\nTransfer\nAdjustment"
+  },
+  {
+   "default": "Pending Approval",
+   "fieldname": "approval_status",
+   "fieldtype": "Select",
+   "label": "Approval Status",
+   "options": "Pending Approval\nApproved\nRejected",
+   "read_only": 1
+  },
+  {
+   "fieldname": "approved_by",
+   "fieldtype": "Link",
+   "label": "Approved By",
+   "options": "User",
+   "read_only": 1
+  },
+  {
+   "fieldname": "approved_on",
+   "fieldtype": "Datetime",
+   "label": "Approved On",
+   "read_only": 1
+  },
+  {
+   "fieldname": "supplier",
+   "fieldtype": "Link",
+   "label": "Supplier",
+   "options": "Supplier"
+  },
+  {
+   "fieldname": "customer",
+   "fieldtype": "Link",
+   "label": "Customer",
+   "options": "Customer"
+  },
+  {
+   "fieldname": "checked_out_to",
+   "fieldtype": "Link",
+   "label": "Checked Out To",
+   "options": "User"
+  },
+  {
+   "fieldname": "stock_count",
+   "fieldtype": "Link",
+   "label": "Stock Count",
+   "options": "Stock Count",
+   "read_only": 1
+  },
+  {
+   "fieldname": "adjustment_reason",
+   "fieldtype": "Small Text",
+   "label": "Adjustment Reason"
   },
   {
    "fieldname": "source_warehouse",
@@ -85,6 +144,30 @@
    "read": 1,
    "report": 1,
    "role": "System Manager",
+   "share": 1,
+   "submit": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Warehouse User",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Warehouse Manager",
    "share": 1,
    "submit": 1,
    "write": 1

@@ -9,14 +9,19 @@
  "field_order": [
   "item",
   "qty",
-  "rate"
+  "rate",
+  "selling_rate",
+  "adjustment_direction",
+  "batch_no",
+  "serial_no"
  ],
  "fields": [
   {
    "fieldname": "item",
    "fieldtype": "Link",
    "label": "Item",
-   "options": "Item"
+   "options": "Item",
+   "reqd": 1
   },
   {
    "fieldname": "rate",
@@ -24,9 +29,31 @@
    "label": "Rate"
   },
   {
+   "fieldname": "selling_rate",
+   "fieldtype": "Currency",
+   "label": "Selling Rate"
+  },
+  {
+   "fieldname": "adjustment_direction",
+   "fieldtype": "Select",
+   "label": "Adjustment Direction",
+   "options": "Increase\nDecrease"
+  },
+  {
    "fieldname": "qty",
    "fieldtype": "Float",
-   "label": "Quantity"
+   "label": "Quantity",
+   "reqd": 1
+  },
+  {
+   "fieldname": "batch_no",
+   "fieldtype": "Data",
+   "label": "Batch No"
+  },
+  {
+   "fieldname": "serial_no",
+   "fieldtype": "Data",
+   "label": "Serial No"
   }
  ],
  "grid_page_length": 50,

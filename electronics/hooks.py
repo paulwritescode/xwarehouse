@@ -5,6 +5,15 @@ app_description = "Simple warehouse system for x electronics"
 app_email = "kinyattipaul@gmail.com"
 app_license = "mit"
 
+after_install = "electronics.install.ensure_roles"
+after_migrate = "electronics.install.ensure_roles"
+
+scheduler_events = {
+	"daily": [
+		"electronics.x_electronics_warehouse.api.create_low_stock_notifications"
+	]
+}
+
 # Apps
 # ------------------
 
@@ -261,4 +270,3 @@ app_license = "mit"
 # ------------
 # List of apps whose translatable strings should be excluded from this app's translations.
 # ignore_translatable_strings_from = []
-
