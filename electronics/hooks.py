@@ -11,7 +11,12 @@ after_migrate = "electronics.install.ensure_roles"
 scheduler_events = {
 	"daily": [
 		"electronics.x_electronics_warehouse.api.create_low_stock_notifications"
-	]
+	],
+	"cron": {
+		"0 17 * * *": [
+			"electronics.x_electronics_warehouse.api.create_daily_admin_call_session"
+		]
+	}
 }
 
 # Apps
@@ -34,11 +39,14 @@ scheduler_events = {
 # ------------------
 
 # include js, css files in header of desk.html
-# app_include_css = "/assets/electronics/css/electronics.css"
+app_include_css = [
+	"/assets/electronics/css/warehouse_desk.css",
+	"/assets/electronics/css/warehouse_call.css",
+]
 # app_include_js = "/assets/electronics/js/electronics.js"
 
 # include js, css files in header of web template
-# web_include_css = "/assets/electronics/css/electronics.css"
+web_include_css = "/assets/electronics/css/xwarehouse_web.css"
 # web_include_js = "/assets/electronics/js/electronics.js"
 
 # include custom scss in every website theme (without file extension ".scss")
@@ -66,12 +74,14 @@ scheduler_events = {
 # ----------
 
 # application home page (will override Website Settings)
-# home_page = "login"
+home_page = "xwarehouse-home"
 
 # website user home page (by Role)
-# role_home_page = {
-# 	"Role": "home_page"
-# }
+role_home_page = {
+	"System Manager": "desk/warehouse-dashboard",
+	"Warehouse Manager": "desk/warehouse-dashboard",
+	"Warehouse User": "desk/warehouse-dashboard",
+}
 
 # Generators
 # ----------

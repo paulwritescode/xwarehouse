@@ -1,0 +1,15 @@
+{
+ "content": null,
+ "doctype": "Page",
+ "icon": "call",
+ "module": "X electronics warehouse",
+ "name": "warehouse-call",
+ "page_name": "warehouse-call",
+ "restrict_to_domain": null,
+ "roles": [],
+ "script": null,
+ "standard": "Yes",
+ "style": null,
+ "system_page": 0,
+ "title": "Administrator call centre"
+}

@@ -1,0 +1,31 @@
+{
+ "actions": [],
+ "autoname": "field:session_key",
+ "creation": "2026-09-30 00:00:00.000000",
+ "doctype": "DocType",
+ "field_order": ["session_key", "session_type", "status", "scheduled_for", "recipient", "summary_title", "summary_text", "summary_json", "public_token", "started_at", "ended_at"],
+ "fields": [
+  {"fieldname": "session_key", "fieldtype": "Data", "label": "Session Key", "no_copy": 1, "read_only": 1, "reqd": 1, "unique": 1},
+  {"fieldname": "session_type", "fieldtype": "Select", "label": "Session Type", "options": "Daily Administrator Summary", "read_only": 1, "reqd": 1},
+  {"default": "Scheduled", "fieldname": "status", "fieldtype": "Select", "label": "Status", "options": "Scheduled\nReady\nIn Progress\nCompleted\nDeclined\nExpired", "reqd": 1},
+  {"fieldname": "scheduled_for", "fieldtype": "Datetime", "label": "Scheduled For", "reqd": 1},
+  {"default": "Administrator", "fieldname": "recipient", "fieldtype": "Link", "label": "Recipient", "options": "User", "read_only": 1, "reqd": 1},
+  {"fieldname": "summary_title", "fieldtype": "Data", "label": "Summary Title", "read_only": 1},
+  {"fieldname": "summary_text", "fieldtype": "Long Text", "label": "Summary Text", "read_only": 1},
+  {"fieldname": "summary_json", "fieldtype": "Long Text", "label": "Summary Data", "read_only": 1, "hidden": 1},
+  {"fieldname": "public_token", "fieldtype": "Data", "label": "Call Token", "no_copy": 1, "read_only": 1, "unique": 1, "hidden": 1},
+  {"fieldname": "started_at", "fieldtype": "Datetime", "label": "Started At", "read_only": 1},
+  {"fieldname": "ended_at", "fieldtype": "Datetime", "label": "Ended At", "read_only": 1}
+ ],
+ "module": "X electronics warehouse",
+ "name": "Voice Call Session",
+ "permissions": [
+  {"create": 1, "delete": 1, "read": 1, "report": 1, "role": "System Manager", "write": 1},
+  {"create": 1, "read": 1, "report": 1, "role": "Warehouse Manager", "write": 1}
+ ],
+ "quick_entry": 0,
+ "sort_field": "scheduled_for",
+ "sort_order": "DESC",
+ "states": [],
+ "track_changes": 1
+}

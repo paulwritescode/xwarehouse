@@ -1,0 +1,51 @@
+{% extends "templates/web.html" %}
+
+{% block title %}XWarehouse — warehouse control{% endblock %}
+
+{% block head_include %}
+<link rel="stylesheet" href="/assets/electronics/css/xwarehouse_web.css">
+<meta name="description" content="XWarehouse keeps stock, sales, discrepancies and daily operations in one clear control room.">
+{% endblock %}
+
+{% block page_content %}
+<div class="xw-landing">
+	<section class="xw-hero">
+		<div class="xw-hero-copy">
+			<p class="xw-eyebrow">X ELECTRONICS / WAREHOUSE OPERATIONS</p>
+			<h1>Warehouse control, without the guesswork.</h1>
+			<p class="xw-lede">A focused workspace for knowing what is in each warehouse, what moved today, and what needs a human review.</p>
+			<div class="xw-actions">
+				{% if is_logged_in %}
+				<a class="xw-button xw-button-primary" href="/app/warehouse-dashboard">Open warehouse</a>
+				<a class="xw-button xw-button-quiet" href="/app/warehouse-call">Open call centre</a>
+				{% else %}
+				<a class="xw-button xw-button-primary" href="/login?redirect-to=/app/warehouse-dashboard">Sign in to XWarehouse</a>
+				<a class="xw-button xw-button-quiet" href="#how-it-works">See how it works</a>
+				{% endif %}
+			</div>
+			<p class="xw-session-note">{% if is_logged_in %}Signed in as {{ current_user }}{% else %}Private company workspace · sign-in required{% endif %}</p>
+		</div>
+		<div class="xw-hero-card" aria-label="Warehouse overview preview">
+			<div class="xw-card-topline"><span class="xw-live-dot"></span> OPERATIONS / TODAY</div>
+			<div class="xw-preview-number">04</div>
+			<div class="xw-preview-label">warehouse signals in one view</div>
+			<div class="xw-preview-grid">
+				<div><strong>Stock</strong><span>balances by location</span></div>
+				<div><strong>Sales</strong><span>movement with context</span></div>
+				<div><strong>Review</strong><span>discrepancies, clearly labelled</span></div>
+			</div>
+		</div>
+	</section>
+
+	<section id="how-it-works" class="xw-value-grid">
+		<div><span class="xw-index">01</span><h2>See the whole floor.</h2><p>Count physical warehouses and see item quantities across them from one dashboard.</p></div>
+		<div><span class="xw-index">02</span><h2>Follow movement.</h2><p>Review receipts, transfers, sales and stock counts without switching between disconnected tools.</p></div>
+		<div><span class="xw-index">03</span><h2>Close the day well.</h2><p>At 17:00, the administrator can receive a concise, factual summary ready for a voice review.</p></div>
+	</section>
+
+	<section class="xw-footer-cta">
+		<div><p class="xw-eyebrow">READY WHEN YOU ARE</p><h2>Start with the control room.</h2></div>
+		{% if is_logged_in %}<a class="xw-button xw-button-primary" href="/app/warehouse-dashboard">Go to dashboard</a>{% else %}<a class="xw-button xw-button-primary" href="/login?redirect-to=/app/warehouse-dashboard">Sign in</a>{% endif %}
+	</section>
+</div>
+{% endblock %}

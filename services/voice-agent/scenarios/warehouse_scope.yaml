@@ -1,0 +1,32 @@
+name: warehouse_scope
+
+scenarios:
+  - name: rejects_exchange_rates
+    turns:
+      - expect:
+          - event: response
+            eval: "the bot opens with a warehouse-focused greeting or offer to help"
+      - user: "What are the current exchange rates?"
+        expect:
+          - event: function_call
+            absent: true
+            within_ms: 5000
+          - event: response
+            text_contains: "XWarehouse"
+            text_excludes: "Let me recall"
+
+  - name: uses_stock_tool
+    turns:
+      - expect:
+          - event: response
+            eval: "the bot opens with a warehouse-focused greeting or offer to help"
+      - user: "How much stock does ITEM-001 have in Main Warehouse?"
+        expect:
+          - event: function_call
+            calls:
+              - name: get_stock_balance
+                args:
+                  item: "ITEM-001"
+                  warehouse: "Main Warehouse"
+          - event: response
+            text_excludes: "I have accessed"

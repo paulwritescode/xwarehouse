@@ -23,6 +23,21 @@ X Electronics needs to know how much stock is in each warehouse and which transa
 - Transfers require approval by a Warehouse Manager before submission. The app creates Warehouse User and Warehouse Manager roles during installation or migration.
 - A daily scheduler creates one in-app Low Stock notification per Warehouse Manager when reorder thresholds are breached.
 - Warehouse Dashboard is available in Desk at `/app/warehouse-dashboard` with stock totals and low-stock items.
+- `/` is the public XWarehouse landing page; authenticated warehouse roles land in the dashboard.
+- `/app/warehouse-call` is the authenticated Vue call-centre screen for the administrator's daily summary.
+- At 17:00 in the site timezone, the scheduler creates one `Voice Call Session` for `Administrator`. The session stores a factual snapshot of stock, sales, low-stock lines, and recorded stock-count variances; it does not infer fraud.
+
+For a local test after migrating the site:
+
+```bash
+cd /Users/iampaulking/projects/duchess/frappe-projects/mybenches
+bench --site xwarehouse migrate
+bench --site xwarehouse execute electronics.x_electronics_warehouse.api.create_daily_admin_call_session
+```
+
+Sign in as `Administrator`, open `/app/warehouse-call`, and use “Talk to voice agent” to start the Pipecat browser WebRTC call inside the warehouse page. Start the agent first from `services/voice-agent` with `uv run python bot.py --transport webrtc`; it listens on the local runner at `http://localhost:7860`. Allow microphone access when prompted. The “Preview summary” action remains available for testing the Frappe session without starting a live call.
+
+For local microphone access, use `http://localhost:8001` for the call-centre page (or serve Frappe over HTTPS). Browsers do not expose microphones to custom insecure HTTP hostnames such as `http://xwarehouse:8001`.
 
 ~~~mermaid
 flowchart LR
@@ -213,6 +228,60 @@ The app also exposes read-only methods for integrations:
 Stock Ledger answers “what happened?” It displays date, time, item, warehouse, Quantity Change, rates, Balance After Transaction, Stock Value, and the source Stock Entry.
 
 Sales Profit answers “what did we expect to earn?” It shows expected revenue, valuation cost, expected gross profit, and margin for each submitted Sales Issue. These are expected gross figures based on the selling rates entered at issue time; they are not a replacement for a full accounting ledger.
+
+## Screenshots
+
+### Item
+
+The product master. The list shows every item with its code, and the form shows the unit, valuation method, reorder level and quantity, and tracking method. The item does not store a quantity; stock comes from the ledger.
+
+| List | Form |
+|---|---|
+| ![Item list](docs/screenshots/full-app/item-list.png) | ![Item form](docs/screenshots/full-app/item-form.png) |
+
+### Warehouse tree
+
+Warehouses are a tree DocType, with Parent Warehouse and Is Group controlling the hierarchy.
+
+![Warehouse tree](docs/screenshots/full-app/warehouse-tree.png)
+
+### Stock Ledger Entry
+
+The permanent, system-created ledger rows. Each stock movement appends a row here when a Stock Entry is submitted. The form shows one row in full: the quantity change, rates, the balance after the transaction, the stock value and the Stock Entry that produced it.
+
+| List | Form |
+|---|---|
+| ![Stock Ledger Entry list](docs/screenshots/full-app/stock-ledger-entry-list.png) | ![Stock Ledger Entry form](docs/screenshots/full-app/stock-ledger-entry-form.png) |
+
+### Stock Balance report
+
+Quantity in stock, moving average rate and stock value per item and warehouse, filterable by date, item and warehouse.
+
+![Stock Balance report](docs/screenshots/full-app/stock-balance-report.png)
+
+### Stock Ledger report
+
+Every stock movement in time order: date, time, item, warehouse, quantity change (positive for additions, negative for removals), incoming rate, valuation rate and the running balance.
+
+![Stock Ledger report](docs/screenshots/full-app/stock-ledger-report.png)
+
+### Low Stock report
+
+Item and warehouse balances at or below the item's reorder level, with the reorder quantity and valuation rate.
+
+![Low Stock report](docs/screenshots/full-app/low-stock-report.png)
+
+### Stock Discrepancy report
+
+Stock count variances: system quantity against counted quantity, the variance and its value, who counted, and the linked adjustment entry.
+
+![Stock Discrepancy report](docs/screenshots/full-app/stock-discrepancy-report.png)
+
+### Sales Profit report
+
+Expected revenue, valuation cost, expected profit and margin for each Sales Issue.
+
+![Sales Profit report](docs/screenshots/full-app/sales-profit-report.png)
 
 ## Architecture
 

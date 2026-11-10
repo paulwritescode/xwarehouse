@@ -1,0 +1,21 @@
+{% extends "templates/web.html" %}
+
+{% block title %}Warehouse Call Centre — XWarehouse{% endblock %}
+
+{% block head_include %}
+<link rel="stylesheet" href="/assets/electronics/css/warehouse_call.css">
+<link rel="manifest" href="/assets/electronics/warehouse-pwa/manifest.webmanifest">
+<meta name="theme-color" content="#10231e">
+{% endblock %}
+
+{% block page_content %}
+<div id="xw-call-app" class="xw-call-page" data-logged-in="{{ 'true' if is_logged_in else 'false' }}">
+	<div class="xw-call-loading">Loading call centre…</div>
+</div>
+{% endblock %}
+
+{% block body_include %}
+<script src="/assets/frappe/node_modules/vue/dist/vue.global.prod.js"></script>
+<script>window.XW_CALL_CONFIG = { loggedIn: {{ 'true' if is_logged_in else 'false' }} };</script>
+<script src="/assets/electronics/js/warehouse_call.js?v=20260930-2"></script>
+{% endblock %}
