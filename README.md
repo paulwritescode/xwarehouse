@@ -245,6 +245,26 @@ Warehouses are a tree DocType, with Parent Warehouse and Is Group controlling th
 
 ![Warehouse tree](docs/screenshots/full-app/warehouse-tree.png)
 
+### Stock Entry: Receipt, Consume, Transfer and Adjustment
+
+The submittable transaction. Every entry carries an Approval Status, and each row records the item, quantity and rate. Submitting an entry writes its Stock Ledger Entry rows.
+
+**Receipt** adds stock to the target warehouse at the given rate, linked to the Supplier it came from.
+
+![Stock Entry Receipt](docs/screenshots/full-app/stock-entry-receipt.png)
+
+**Consume** removes stock from the source warehouse at the current moving-average rate, linked to the Customer it went to.
+
+![Stock Entry Consume](docs/screenshots/full-app/stock-entry-consume.png)
+
+**Transfer** moves stock from source to target and carries the source rate across. It needs Warehouse Manager approval before it can be submitted.
+
+![Stock Entry Transfer](docs/screenshots/full-app/stock-entry-transfer.png)
+
+**Adjustment** reconciles a physical count. It is created from a Stock Count, uses the same warehouse as source and target, and records the reason for the change.
+
+![Stock Entry Adjustment](docs/screenshots/full-app/stock-entry-adjustment.png)
+
 ### Stock Ledger Entry
 
 The permanent, system-created ledger rows. Each stock movement appends a row here when a Stock Entry is submitted. The form shows one row in full: the quantity change, rates, the balance after the transaction, the stock value and the Stock Entry that produced it.
