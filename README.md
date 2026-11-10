@@ -167,6 +167,60 @@ Stock Balance answers “how much remains?” It displays Item Code, Item Name, 
 
 Stock Ledger answers “what happened?” It displays date, time, item, warehouse, Quantity Change, rates, Balance After Transaction, Stock Value, and the source Stock Entry.
 
+## Screenshots
+
+### Item
+
+The product master: code, name, unit and valuation method. The item does not store a quantity; stock comes from the ledger.
+
+| List | Form |
+|---|---|
+| ![Item list](docs/screenshots/item-list.png) | ![Item form](docs/screenshots/item-form.png) |
+
+### Warehouse (tree DocType)
+
+Warehouses are a tree DocType. The tree view shows locations under the root, and Parent Warehouse and Is Group control nesting.
+
+| Tree | List |
+|---|---|
+| ![Warehouse tree](docs/screenshots/warehouse-tree.png) | ![Warehouse list](docs/screenshots/warehouse-list.png) |
+
+### Stock Entry: Receipt, Consume and Transfer
+
+The submittable transaction. A Receipt needs only a Target Warehouse, a Consume needs only a Source Warehouse, and a Transfer needs both. Each row records the item, quantity and incoming rate.
+
+**Receipt** adds stock to the target warehouse at the given rate.
+
+![Stock Entry Receipt](docs/screenshots/stock-entry-receipt.png)
+
+**Consume** removes stock from the source warehouse at the current moving-average rate.
+
+![Stock Entry Consume](docs/screenshots/stock-entry-consume.png)
+
+**Transfer** moves stock from source to target and carries the source rate across.
+
+![Stock Entry Transfer](docs/screenshots/stock-entry-transfer.png)
+
+### Stock Ledger Entry
+
+One row per item per warehouse movement, created on submit and never edited by users. The form shows the quantity change, the moving-average valuation rate, the balance after the transaction, the stock value and the source Stock Entry.
+
+| List | Form |
+|---|---|
+| ![Stock Ledger Entry list](docs/screenshots/stock-ledger-entry-list.png) | ![Stock Ledger Entry form](docs/screenshots/stock-ledger-entry-form.png) |
+
+### Stock Ledger report
+
+Every movement in time order, with the quantity change, incoming and valuation rates, the running balance and stock value, and the source Stock Entry.
+
+![Stock Ledger report](docs/screenshots/stock-ledger-report.png)
+
+### Stock Balance report
+
+Quantity, moving-average rate and stock value per item and warehouse as at the selected date.
+
+![Stock Balance report](docs/screenshots/stock-balance-report.png)
+
 ## Architecture
 
 ~~~mermaid
